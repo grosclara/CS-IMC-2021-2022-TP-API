@@ -33,10 +33,11 @@ def get_avg_ratings():
     conn_str = 'DRIVER={ODBC Driver 17 for SQL Server};SERVER=tcp:'+server+';PORT=1433;DATABASE='+database+';UID='+username+';PWD='+ password
     with pyodbc.connect(conn_str) as conn:
         cursor = conn.cursor()
-
-        query = "SELECT genre, SUM(averageRating)/COUNT(*) AS avg_ratings\
-            FROM [dbo].[tTitles] as T, [dbo].[tGenres] as G\
-            WHERE T.tconst = G.tconst AND averageRating >= 0\
+        
+        query = "SELECT genre, SUM(averageRating)/COUNT(*) AS avg_rating\
+            FROM [dbo].[tTitles] AS t\
+            INNER JOIN [dbo].[tGenres] g ON t.tconst = g.tconst \
+            WHERE averageRating >= 0\
             GROUP BY genre"
 
         cursor.execute(query)
