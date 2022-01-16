@@ -28,8 +28,8 @@ def main(req: func.HttpRequest) -> func.HttpResponse:
         try:
             birthYear = get_birthYear(name)
             if birthYear < 0:
-                return func.HttpResponse("Connexion réussie à SQL Server!\n\n" + f"There is no artist named {name} in the database.")
-            return func.HttpResponse("Connexion réussie à SQL Server!\n\n" + f"{name} was born in {birthYear}.")
+                return func.HttpResponse("Connexion réussie à Neo4J!\n\n" + f"There is no artist named {name} in the database.")
+            return func.HttpResponse("Connexion réussie à Neo4J!\n\n" + f"{name} was born in {birthYear}.")
         except:
             return func.HttpResponse("Erreur de connexion à la base Neo4J", status_code=500)
 
