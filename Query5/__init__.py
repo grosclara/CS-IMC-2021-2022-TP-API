@@ -38,6 +38,7 @@ def get_avg_duration(category, director, actor):
     cat_query = f"SELECT t.tconst, runtimeMinutes\
         FROM [dbo].[tTitles] as t\
         INNER JOIN [dbo].[tGenres] g\
+        ON t.tconst = g.tconst\
         WHERE t.tconst = g.tconst \
         AND genre = '{category}'" if category else None
 
