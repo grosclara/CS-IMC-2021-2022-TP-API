@@ -47,7 +47,7 @@ def get_avg_duration(category, director, actor):
         ON T.tconst = a.tconst\
         INNER JOIN [dbo].[tNames] b\
         ON b.nconst = a.nconst\
-        WHERE category = 'acted in' AND primaryName = {actor}" if actor else None
+        WHERE category = 'acted in' AND primaryName = '{actor}'" if actor else None
 
     dir_query = f"SELECT t.tconst, runtimeMinutes\
         FROM [dbo].[tTitles] AS t\
